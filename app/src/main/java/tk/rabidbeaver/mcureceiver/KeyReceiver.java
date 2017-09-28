@@ -56,7 +56,6 @@ public class KeyReceiver extends BroadcastReceiver {
                 } else {
                     actionTypes[i] = Constants.ACTIONTYPES.NULL;
                 }
-
             }
             loaded = true;
         }
@@ -64,7 +63,7 @@ public class KeyReceiver extends BroadcastReceiver {
         if (intent.hasExtra("KEY")){
             int keycode = intent.getIntExtra("KEY", -1);
 
-            if (keycode >= 0 && keycode < 256 && actionTypes[keycode] != Constants.ACTIONTYPES.NULL){
+            if (keycode >= 0 && keycode < 256){
                 switch(actionTypes[keycode]){
                     case Constants.ACTIONTYPES.BROADCAST_INTENT:
                         broadcast(context, actions[keycode]);
