@@ -24,6 +24,7 @@ public class KeyReceiver extends BroadcastReceiver {
                     sIntent = new Intent(Intent.ACTION_MAIN);
                     sIntent.setComponent(ComponentName.unflattenFromString("com.google.android.apps.maps/com.google.android.maps.MapsActivity"));
                     sIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                    sIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(sIntent);
                     return;
                 case 0x18:
