@@ -47,14 +47,13 @@ public class KeyReceiver extends BroadcastReceiver {
         if (!loaded){
             SharedPreferences keyActionStore = context.getSharedPreferences("keyActionStore", Context.MODE_PRIVATE);
             for (int i=0; i<256; i++){
+                actionTypes[i] = Constants.ACTIONTYPES.NULL;
                 if (keyActionStore.contains(Integer.toString(i))){
                     String keyString = keyActionStore.getString(Integer.toString(i), null);
                     if (keyString != null){
                         actions[i] = keyString.substring(1);
                         actionTypes[i] = Integer.parseInt(keyString.substring(0,1));
-                    } else actionTypes[i] = Constants.ACTIONTYPES.NULL;
-                } else {
-                    actionTypes[i] = Constants.ACTIONTYPES.NULL;
+                    }
                 }
             }
             loaded = true;
