@@ -32,13 +32,32 @@ public class KeyReceiver extends BroadcastReceiver {
         context.sendBroadcast(sIntent);
     }
 
-    private void key(int keycode){
-        String cmd = "input keyevent "+keycode;
-        Command command = new Command(0, cmd);
-        try {
-            RootShell.getShell(true).add(command);
-        } catch (IOException | TimeoutException | RootDeniedException e){
-            e.printStackTrace();
+    private void key(Context context, int keycode){
+        Intent buttonServiceIntent;
+        switch(keycode){
+            case 0x03:
+                buttonServiceIntent = new Intent(context, ButtonService.class);
+                buttonServiceIntent.setAction("HOME");
+                context.startService(buttonServiceIntent);
+                break;
+            case 0x04:
+                buttonServiceIntent = new Intent(context, ButtonService.class);
+                buttonServiceIntent.setAction("BACK");
+                context.startService(buttonServiceIntent);
+                break;
+            case 0xbb:
+                buttonServiceIntent = new Intent(context, ButtonService.class);
+                buttonServiceIntent.setAction("RECENT");
+                context.startService(buttonServiceIntent);
+                break;
+            default:
+                String cmd = "input keyevent "+keycode;
+                Command command = new Command(0, cmd);
+                try {
+                    RootShell.getShell(true).add(command);
+                } catch (IOException | TimeoutException | RootDeniedException e){
+                    e.printStackTrace();
+                }
         }
     }
 
@@ -71,10 +90,10 @@ public class KeyReceiver extends BroadcastReceiver {
                         activity(context, actions[keycode]);
                         break;
                     case Constants.ACTIONTYPES.KEYCODE:
-                        key(Integer.parseInt(actions[keycode]));
+                        key(context, Integer.parseInt(actions[keycode]));
                         break;
                     default:
-                        key(keycode);
+                        key(context, keycode);
                 }
             }
         }

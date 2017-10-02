@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="tk.rabidbeaver.mcureceiver">
 
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,6 +23,14 @@
                 <action android:name="tk.rabidbeaver.mcureceiver.MCU_KEY" />
             </intent-filter>
         </receiver>
+        <service
+            android:name=".ButtonService"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
