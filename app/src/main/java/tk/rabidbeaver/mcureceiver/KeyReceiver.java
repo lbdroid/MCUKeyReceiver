@@ -51,6 +51,7 @@ public class KeyReceiver extends BroadcastReceiver {
                 context.startService(buttonServiceIntent);
                 break;
             default:
+                // Ideally, don't use this. It is slow.
                 String cmd = "input keyevent "+keycode;
                 Command command = new Command(0, cmd);
                 try {

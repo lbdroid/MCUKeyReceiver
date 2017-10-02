@@ -32,7 +32,6 @@ public class ButtonService extends AccessibilityService {
 
         if (!result) Log.d("ButtonService", "result is FALSE");
 
-        stopSelf();
         return Service.START_STICKY;
     }
 }

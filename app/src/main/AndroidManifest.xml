@@ -6,12 +6,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/steering"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".KeyConfiguration">
+        android:theme="@style/Theme.AppCompat">
+        <activity android:name=".KeyConfiguration"
+            android:label="SWI Config">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -25,7 +25,7 @@
         </receiver>
         <service
             android:name=".ButtonService"
-            android:label="@string/app_name"
+            android:label="MCU Key Service"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
