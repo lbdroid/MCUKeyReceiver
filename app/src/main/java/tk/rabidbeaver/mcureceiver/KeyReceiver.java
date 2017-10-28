@@ -64,6 +64,18 @@ public class KeyReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent){
+
+        if (intent.getAction().contentEquals("tk.rabidbeaver.maincontroller.STANDBY")){
+            String cmd = "input keyevent 26";
+            Command command = new Command(0, cmd);
+            try {
+                RootShell.getShell(true).add(command);
+            } catch (IOException | TimeoutException | RootDeniedException e){
+                e.printStackTrace();
+            }
+            return;
+        }
+
         if (!loaded){
             SharedPreferences keyActionStore = context.getSharedPreferences("keyActionStore", Context.MODE_PRIVATE);
             for (int i=0; i<256; i++){

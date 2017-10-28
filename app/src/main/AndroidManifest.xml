@@ -20,6 +20,7 @@
         </activity>
         <receiver android:name=".KeyReceiver">
             <intent-filter>
+                <action android:name="tk.rabidbeaver.maincontroller.STANDBY" />
                 <action android:name="tk.rabidbeaver.mcureceiver.MCU_KEY" />
             </intent-filter>
         </receiver>
