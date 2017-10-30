@@ -18,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.stericson.RootShell.RootShell;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,6 +98,7 @@ public class KeyConfiguration extends AppCompatActivity {
                 }
             }
         }
+        if (!RootShell.isAccessGiven()) Log.d("KeyConfig","NO ROOT");
     }
 
     private View newCardView(Context context, int type, int input, String value, int code){
